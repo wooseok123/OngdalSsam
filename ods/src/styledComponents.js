@@ -6,8 +6,8 @@ export const AppContainer = styled.div`
 
   margin: 0 auto;
   max-width: 1600px;
-  min-width: 760px;
-  width: 100%;
+  min-width: 569px;
+  width: 100vw;
   * {
     box-sizing: border-box;
     font-family: "Gothic A1", sans-serif;
@@ -252,7 +252,7 @@ export const MainWaterSlideContainer = styled.div`
 `;
 
 export const MainEachWaterOverflow = styled.div`
-  overflowx: scroll;
+  overflow-x: scroll;
   display: flex;
   align-items: center;
   flexgrow: 1;
@@ -321,6 +321,16 @@ export const MainVideoIframeTextContainer = styled.div`
 
 export const MainVideoIframeBoldContainer = styled.div``;
 
+export const MainVideoIframe = styled.iframe`
+  width: 560px;
+  height: 315px;
+
+  @media screen and (max-width: 760px) {
+    width: 360px;
+    height: 180px;
+  }
+`;
+
 export const MainVideoIframeThinContainer = styled.div`
   margin-top: 40px;
   font-weight: 400;
@@ -376,6 +386,9 @@ export const MainAdsEachWaterWrapper = styled.div`
   height: 290px;
   aling-items: end;
   margin-left: 50px;
+  overflow-x: scroll;
+
+  overflow-y: hidden;
 
   @media screen and (max-width: 950px) {
     height: 250px;
@@ -412,6 +425,11 @@ export const MainVideoIframeContainer = styled.div`
   &::-webkit-scrollbar {
     display: none; /* 크롬, 사파리, 오페라, 엣지 */
   }
+
+  @media screen and (max-width: 760px) {
+    height: auto;
+    padding: 40px 0px;
+  }
 `;
 
 export const SlideMover = styled.div`
@@ -424,6 +442,19 @@ export const SlideMover = styled.div`
     top: 260px;
     left: ${(props) => `${props.posMobile}px`};
   }
+
+  @media screen and (max-width: 760px) {
+    top: 190px;
+    left: ${(props) => `${props.right}px`};
+  }
+`;
+
+export const MainVideoIframeSubContainer = styled.div`
+  margin-left: 78px;
+  display: flex;
+  gap: 90px;
+  transform: ${(props) => `translateX(${props.slidePX}px)`};
+  transition-duration: 500ms;
 `;
 
 // MainAdsEachWater

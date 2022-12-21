@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import checked from "../img/checked.svg";
 import {
   MainVideoSlideContainer,
@@ -13,6 +13,8 @@ import {
   MainVideoIframeThinContainer,
   MainVideoIframeTextContainer,
   MainVideoIframeBoldContainer,
+  MainVideoIframe,
+  MainVideoIframeSubContainer,
 } from "../styledComponents";
 import right from "../img/right.svg";
 import left from "../img/left.svg";
@@ -20,15 +22,17 @@ import blur from "../img/blur.svg";
 import MainAdsEachWater from "./MainAdsEachWater";
 
 const MainVideoSlide = ({ bold, thin, data }) => {
+  const iframeWidth = useRef();
   const [slidePX, setSlidePX] = useState(0);
   const [currentWater, setCurrentWater] = useState(1);
-  console.log(currentWater);
+
   const slideHanlder = (e) => {
+    const dx = iframeWidth.current.clientWidth;
     if (e.target.id == "right") {
-      setSlidePX(slidePX - 650);
+      setSlidePX(slidePX - dx - 90);
       setCurrentWater(currentWater + 1);
     } else {
-      setSlidePX(slidePX + 650);
+      setSlidePX(slidePX + dx + 90);
       setCurrentWater(currentWater - 1);
     }
   };
@@ -59,7 +63,7 @@ const MainVideoSlide = ({ bold, thin, data }) => {
         {slidePX === 0 ? (
           ""
         ) : (
-          <SlideMover posPC="300" posMobile="20">
+          <SlideMover posPC="300" posMobile="20" id="left">
             <img
               src={left}
               style={{ height: "39px", width: "27px" }}
@@ -71,7 +75,7 @@ const MainVideoSlide = ({ bold, thin, data }) => {
         {slidePX <= (data.length - 1) * -650 ? (
           ""
         ) : (
-          <SlideMover posPC="945" posMobile="670">
+          <SlideMover posPC="945" posMobile="670" id="right" right="470">
             <img
               src={right}
               style={{ height: "39px", width: "27px" }}
@@ -82,27 +86,18 @@ const MainVideoSlide = ({ bold, thin, data }) => {
         )}
 
         <MainVideoIframeContainer>
-          <div
-            style={{
-              marginLeft: "78px",
-              display: "flex",
-              gap: "90px",
-              transform: `translateX(${slidePX}px)`,
-              transitionDuration: "0.5s",
-            }}
-          >
+          <MainVideoIframeSubContainer slidePX={slidePX}>
             {data.map((el) => (
-              <iframe
-                width="560"
-                height="315"
+              <MainVideoIframe
                 src="https://www.youtube.com/embed/0X50Yr7HAQI"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
-              ></iframe>
+                ref={iframeWidth}
+              ></MainVideoIframe>
             ))}
-          </div>
+          </MainVideoIframeSubContainer>
         </MainVideoIframeContainer>
       </MainVideoIframeWrapper>
       <MainVideoAdsWrapper>
