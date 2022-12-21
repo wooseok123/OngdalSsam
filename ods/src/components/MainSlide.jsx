@@ -6,6 +6,9 @@ import { MainSlideContainer, MainSlideImg } from "../styledComponents";
 import ongdal1 from "../img/ongdal_1.svg";
 import ongdal2 from "../img/ongdal_2.svg";
 import slideToggle from "../img/SlideToggle.svg";
+import MainSlide2 from "../img/MainSlide2.svg";
+import recycle from "../img/recycle.svg";
+import slide2Btn from "../img/Slide2Btn.svg";
 
 const MainSlide = () => {
   return (
@@ -120,8 +123,59 @@ const MainSlide = () => {
             </div>
           </div>
         </div>
-        <div>
-          <MainSlideImg src={MainSlide1} />
+        <div style={{ position: "relative" }}>
+          <MainSlideImg src={MainSlide2} />
+
+          <div
+            style={{
+              position: "absolute",
+              top: "100px",
+              left: "158px",
+              color: "black",
+              textAlign: "left",
+            }}
+          >
+            <p style={{ fontSize: "20px", fontWeight: 500 }}>
+              옹달샘 무라벨 생수 기획전
+            </p>
+            <div
+              style={{
+                marginTop: "35px",
+                fontSize: "40px",
+                fontWeight: 700,
+                textAlign: "left",
+                display: "flex",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "start",
+                  marginTop: "10px",
+                }}
+              >
+                <img src={recycle} style={{ width: "50px" }} />
+              </div>
+              <div style={{ marginLeft: "10px", marginBottom: "30px" }}>
+                <p>
+                  <span style={{ color: "#04BCFF" }}>
+                    지구를 위해 나를 위해
+                  </span>
+                </p>
+                <p>이제 생수로도 함께 해요 </p>
+                <div
+                  style={{
+                    width: "148px",
+                    height: "53px",
+                    marginTop: "50px",
+                    cursor: "pointer",
+                  }}
+                >
+                  <img src={slide2Btn} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div>
           <MainSlideImg src={MainSlide1} />
