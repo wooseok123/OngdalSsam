@@ -650,7 +650,7 @@ export const MainLoginBgContainer = styled.img`
 export const FooterContainer = styled.div`
   width: 100%;
   height: 180px;
-  background-color: black;
+  background-color: #e0f2f9;
   padding: 30px;
   display: flex;
 `;

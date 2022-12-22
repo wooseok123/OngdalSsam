@@ -8,7 +8,7 @@ const Footer = () => {
       <img src={FooterLogo} />
       <div
         style={{
-          color: "white",
+          color: "black",
           marginLeft: "40px",
           display: "flex",
           justifyContent: "center",
